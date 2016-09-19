@@ -1,0 +1,37 @@
+<div class="container">
+	<div class="row">
+		<div ng-repeat="timeline in timelinesList.timelines" class="col s12 m6">
+			<div class="card">
+				<div class="card-content">
+					<span class="card-title">{{timeline.name}}</span>
+					<p>{{timeline.description}}</p>
+				</div>
+				<div class="card-action">
+
+					<a ui-sref="editTimeline({ timelineId: timeline._id })">Edit</a>
+
+					<a ui-sref="viewTimeline({ timelineId: timeline._id })" target="_blank">Public link</a>
+
+					<a href="#" class="activator"><i class="material-icons right">more_vert</i></a>
+
+				</div>
+				<div class="card-reveal">
+					<span class="card-title">{{timeline.name}}<i class="material-icons right">close</i></span>
+					<timeline-remove timeline="timeline"></timeline-remove>
+				</div>
+			</div>
+		</div>
+		<div class="col s12 m6" ng-show="timelinesList.timelines.length === 0">
+			<div class="card">
+				<div class="card-content">
+					<span class="card-title">No timelines yet</span>
+					<p>Start by creating your first timeline</p>
+				</div>
+				<div class="card-action">
+					<a href="#">This is a link</a>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

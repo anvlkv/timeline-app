@@ -1,0 +1,49 @@
+<div class="container">
+	<div class="row">
+		<form ng-submit="timelineEditor.saveTimeline(timelineEditor.timeline)" class="col s12">
+			<legend><h3>{{timelineEditor.timeline._id ? 'Edit ' + timelineEditor.timeline.name : 'New'}} timeline</h3></legend>
+			<div class="row">
+				<input-field class="col s12">
+					<input ng-model="timelineEditor.timeline.name" id="timeline_name" type="text" class="validate" placeholder="Give your timeline a descriptive title">
+					<label for="timeline_name">Timeline name</label>
+				</input-field>
+				<input-field class="col s12">
+					<textarea ng-model="timelineEditor.timeline.description" id="timeline_description" class="validate materialize-textarea" placeholder="Give a short description of timeline"></textarea>
+					<label for="timeline_description">Short description</label>
+				</input-field>
+				<input-field class="col s12">
+					<textarea ng-model="timelineEditor.timeline.introduction_text" id="introduction_text" class="validate materialize-textarea" placeholder="Write an introduction into what will be presented in this timeline"></textarea>
+					<label for="introduction_text">Introduction text</label>
+				</input-field>
+				<input-field class="col s12">
+					<textarea ng-model="timelineEditor.timeline.conslusion_text" id="conslusion_text" class="validate materialize-textarea" placeholder="What could you conclude from this timeline?"></textarea>
+					<label for="conslusion_text">Conclusion text</label>
+				</input-field>
+				<input-field class="col s12 m6">
+					<select material-select watch ng-model="timelineEditor.timeline.scale_step" id="scale_step">
+						<option ng-repeat="option in timelineEditor.scaleOptions" value="{{option.value}}">{{option.name}}</option>
+					</select>
+					<label for="scale_step">Scale</label>
+				</input-field>
+				<div class="col s12 m6">
+					<label>Timeline sharing</label>
+					<div class="switch">
+						<label>
+							Private
+							<input disabled type="checkbox" ng-model="timelineEditor.timeline.public_timeline">
+								<span class="lever"></span>
+								Public
+						</label>
+					</div>
+				</div>
+			</div>
+			<button type="submit" class="btn waves-effect waves-light">Save<i class="material-icons right">done</i></button>
+		</form>
+	</div>
+</div>
+
+<!-- <pre>{{timelineEditor.timeline | json}}</pre> -->
+
+<events-editor ng-model="timelineEditor.timeline.events" tl-timeline="timelineEditor.timeline"></events-editor>
+
+<!-- <timeline-viewer tl-timeline-src="{timelineEditor.timeline}"></timeline-viewer> -->

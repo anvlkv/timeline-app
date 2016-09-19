@@ -1,0 +1,9 @@
+<div class="scale">
+	<ul class="scale-steps">
+		<li scale-step ng-repeat="step in steps track by $index">
+			<div ng-if="step.fractionLabel" class="scale-step" ng-class="{'major-step': !!step.label, 'active-step':timelineScale.isCurrentStep(step)}" tooltipped data-position="right" data-delay="50" data-tooltip="{{step.fractionLabel}}">
+				<span ng-bind-html="step.label">&nbsp;</span>
+			</div>
+		</li>
+	</ul>
+</div>

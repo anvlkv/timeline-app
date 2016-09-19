@@ -1,0 +1,22 @@
+<form ng-submit="eventEditor.saveEvent(eventEditor.event)" class="col s12">
+	<legend><h3>{{eventEditor.event.name ? 'Edit ' + eventEditor.event.name : 'New'}} event</h3></legend>
+	<div class="row">
+		<input-field class="col s12">
+			<input ng-model="eventEditor.event.name" id="event_name" type="text" class="validate" placeholder="Give your event a descriptive title">
+			<label for="event_name">Title</label>
+		</input-field>
+		<input-field class="col s12">
+			<input ng-model="eventEditor.event.date" id="event_date" type="date" class="validate">
+			<label for="event_date">Date</label>
+		</input-field>
+		<input-field class="col s12">
+			<input ng-model="eventEditor.event.summary" id="event_summary" type="text" class="validate" placeholder="Give your event a clear summary">
+			<label for="event_summary">Summary</label>
+		</input-field>
+		<input-field class="col s12">
+			<textarea ng-model="eventEditor.event.full_description" id="full_description" class="validate materialize-textarea" placeholder="Fully describe the event"></textarea>
+			<label for="full_description">Event description</label>
+		</input-field>
+	</div>
+	<button type="submit" class="btn waves-effect waves-light">Save<i class="material-icons right">done</i></button>
+</form>

@@ -1,0 +1,16 @@
+<div class="row">
+	<!-- {{timelineViewer | json}} -->
+	<div class="col s12 m8 offset-m2 slide-view">
+		<h1>{{timelineViewer.timeline.name}}</h1>
+		<p class="flow-text">{{timelineViewer.timeline.introduction_text}}</p>
+	</div>
+	<div class="col s12">
+		<timeline-scale tl-scale="timelineViewer.scaleParams" ng-model="timelineViewer.scaleSteps" class="col s12 m3"></timeline-scale>
+		<div class="col s12 m9 feed-wrap">
+			<ul events-feed ef-steps="timelineViewer.scaleSteps" ef-events="events" class="feed" ef-view-type="viewer"></ul>
+		</div>
+	</div>
+	<div class="col s12 m8 offset-m2 slide-view">
+		<p class="flow-text">{{timelineViewer.timeline.conslusion_text}}</p>
+	</div>
+</div>

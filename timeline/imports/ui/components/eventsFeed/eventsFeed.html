@@ -1,0 +1,22 @@
+<li class="feed-cursor" style="
+	top:{{viewCursor.onScale + 'px'}};
+	width:{{viewCursor.width + 'vw'}};
+"></li>
+<li event-item ng-repeat="event in efEvents track by $index" class="feed-event" style="
+	top:{{eventsPositions[event._id].onScale + 'px'}};
+	left:{{(unfoldedEvents[event._id] ? 0 : eventsPositions[event._id].offScale) + 'px'}};
+	width:{{unfoldedEvents[event._id] ? '100%' : 'auto'}};
+">
+	<event-thumb ng-if="!unfoldedEvents[event._id]" ng-click="eventsFeed.unfoldEvent(event._id)" ng-mouseover="eventsFeed.positionCursor(event._id)" ng-mouseleave="eventsFeed.releaseCursor()"></event-thumb>
+	<div class="card event-wrap" ng-if="unfoldedEvents[event._id]">
+		<div class="row">
+			<span class="card-title grey-text text-darken-4">
+				<a href="#" title="Close" ng-click="eventsFeed.foldEvent(event._id)">
+					<i class="material-icons right">close</i>
+				</a>
+			</span>
+			<event-editor ng-if="viewType === 'editor'" ee-event="event._id"></event-editor>
+			<event-viewer ng-if="viewType === 'viewer'" ev-event="event"></event-viewer>
+		</div>
+	</div>
+</li>
