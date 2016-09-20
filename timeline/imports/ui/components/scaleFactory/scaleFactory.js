@@ -19,6 +19,7 @@ function scaleFactory (){
 		scaleFactory.alignment= '';
 		scaleFactory.labelFormat='',
 		scaleFactory.fractionLabelFormat='';
+		scaleFactory.scaleSize = 0;
 	}
 
 	// init scale;
@@ -215,6 +216,11 @@ function scaleFactory (){
 	scaleFactory.setPosition = (index, position)=>{
 		scaleFactory.scale[index].position = position;
 	}
+
+	scaleFactory.setScaleSize = (size)=>{
+		scaleFactory.scaleSize = size;
+	}
+
 
 	scaleFactory.getEventPosition = (date)=>{
 		let position;

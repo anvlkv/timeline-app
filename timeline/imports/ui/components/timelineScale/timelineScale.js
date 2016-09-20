@@ -93,6 +93,10 @@ export default angular.module(name,[
 						// console.log()
 
 						if (scope.$last) {
+							scope.scaleFactory.setScaleSize(
+								angular.element(iElement).prop('offsetTop')
+								+ angular.element(iElement).prop('offsetHeight')
+							);
 							scope.$parent.scaleReady = true;
 						}else{
 							scope.$parent.scaleReady = false;

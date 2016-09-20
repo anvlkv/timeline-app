@@ -25,6 +25,8 @@ class EventsFeed {
 			width:0,
 		};
 
+		$scope.scaleFactory = scaleFactory;
+
 		this.setEventPosition = function (event) {
 			let position = scaleFactory.getEventPosition(event.date);
 			$scope.eventsPositions[event._id] = {
@@ -142,6 +144,10 @@ function eventsFeed($timeout){
 					}
 				}
 			});
+
+			scope.$watch('scaleFactory.scaleSize', (val)=>{
+				$(element).height(val);
+			})
 
 			// $timeout(()=>{
 			// 	console.log(element);
