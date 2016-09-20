@@ -71,13 +71,14 @@
 
 .feed-wrap{
 	min-height: 100%;
-	overflow-x: scroll;
-	overflow-y: hidden;
 }
 
 .feed{
 	min-height: 100%;
-	min-width: 300vw;
+	// overflow-x: scroll;
+	// overflow-y: hidden;
+	// width: 100%;
+	// min-width: 300vw;
 	position: relative;
 	.feed-cursor{
 		position: absolute;
