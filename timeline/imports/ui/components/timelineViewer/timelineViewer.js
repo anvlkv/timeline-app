@@ -25,7 +25,7 @@ class TimelineViewer {
     		if (timeline) {
     			let eventsList = timeline.events;
     			if (eventsList) {
-    				let events = Events.find({_id:{$in:eventsList}},{sort:{date:1}});
+    				let events = Events.find({_id:{$in:eventsList}, date:{$exists:true}},{sort:{date:1}});
     				// console.log(events.fetch());
     				$scope.events = events.fetch();
     				return events;
