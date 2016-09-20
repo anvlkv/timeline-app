@@ -50,6 +50,8 @@ class EventsFeed {
 						if(
 							($scope.eventsLayout[e].top <= $scope.eventsLayout[e2].bottom)
 							&& ($scope.eventsLayout[e].bottom >= $scope.eventsLayout[e2].top)
+							&& ($scope.eventsLayout[e].left < $scope.eventsLayout[e2].right)
+							&& ($scope.eventsLayout[e].right > $scope.eventsLayout[e2].left)
 						){
 							let flat = [].concat.apply([], interferences);
 							if (
@@ -159,7 +161,7 @@ function eventItem ($timeout){
 					const changed = [];
 					for (let e in newVal) {
 						for (let p in newVal[e]) {
-							if (p !== 'offScale') {
+							// if (p !== 'offScale') {
 								if (!oldVal[e] 
 									|| !oldVal[e][p]
 									|| newVal[e][p] !== oldVal[e][p]) {
@@ -167,9 +169,9 @@ function eventItem ($timeout){
 								}else{
 									changed.push(false);
 								}
-							}else{
-								changed.push(false);
-							}
+							// }else{
+							// 	changed.push(false);
+							// }
 						}
 					}
 
@@ -183,8 +185,10 @@ function eventItem ($timeout){
 								event: scope.event._id,
 								top: $(element).position().top,
 								bottom: $(element).position().top + $(element).height(),
+								height: $(element).height(),
 								left: $(element).position().left,
 								right: $(element).position().left + $(element).outerWidth(),
+								width: $(element).outerWidth(),
 							})
 
 							// console.log($(element).position().left + $(element).outerWidth());
