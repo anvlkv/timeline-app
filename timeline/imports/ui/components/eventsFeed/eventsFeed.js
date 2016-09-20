@@ -115,6 +115,7 @@ class EventsFeed {
 }
 
 function eventsFeed($timeout){
+	'ngInject';
 	return{
 		template,
 		restrict:'A',

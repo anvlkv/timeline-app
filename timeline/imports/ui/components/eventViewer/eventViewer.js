@@ -5,6 +5,7 @@ import template from './eventViewer.html';
 
 class EventViewer {
 	constructor($scope){
+		'ngInject';
 		// console.log($scope);
 	}
 }
@@ -12,6 +13,7 @@ class EventViewer {
 const name = "eventViewer";
 
 function eventViewer() {
+	'ngInject';
 	return{
 		template,
 		controllerAs: name,

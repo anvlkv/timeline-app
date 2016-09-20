@@ -67,6 +67,7 @@ class EventsEditor{
 }
 
 function eventsEditorDirective(){
+	'ngInject';
 	return{
 		template,
 		require: 'ngModel',

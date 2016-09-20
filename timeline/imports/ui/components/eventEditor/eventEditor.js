@@ -56,6 +56,7 @@ class EventEditor {
 const name = 'eventEditor';
 
 function eventEditorDirective () {
+  'ngInject';
 	return {
 		template,
 		controllerAs: name,

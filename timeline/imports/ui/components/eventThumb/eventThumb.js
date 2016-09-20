@@ -5,6 +5,7 @@ import template from './eventThumb.html';
 
 class EventThumb {
 	constructor($scope){
+		'ngInject';
 		// console.log($scope);
 	}
 }
@@ -12,6 +13,7 @@ class EventThumb {
 const name = "eventThumb";
 
 function eventThumb() {
+	'ngInject';
 	return{
 		template,
 		controllerAs: name,

@@ -50,6 +50,7 @@ class TimelineScale {
 const name = 'timelineScale';
 
 function tlScale (){
+	'ngInject';
 	return {
 		template,
 		restrict: 'E',
@@ -76,6 +77,7 @@ export default angular.module(name,[
 	ScaleFactory
 ]).directive(name, tlScale)
 .directive('scaleStep', function($timeout){
+	'ngInject';
 	return {
 		restrict: 'A',
 		link: {
