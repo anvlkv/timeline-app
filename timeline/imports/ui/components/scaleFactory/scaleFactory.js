@@ -38,10 +38,8 @@ function scaleFactory (){
 						scaleFactory.alignment = 'days';
 						break;
 					case 'months':
-						scaleFactory.alignment = 'years';
-						break;
 					case 'years':
-						scaleFactory.alignment = 'decades';
+						scaleFactory.alignment = 'years';
 						break;
 					default:
 						scaleFactory.alignment = scaleFactory.unit[1];
@@ -153,19 +151,22 @@ function scaleFactory (){
 
 		// build intemediate scale
 		function buildIntermScale(startD, targetD){
-			let startM = moment(startD);
+			// let startM = moment(startD);
 			// console.log(fraction);
 			// minor step
 			let mStep = {
-				date: moment(startD).add(fraction[0], fraction[1])._d,
-				fractionLabel: moment(startD).add(fraction[0], fraction[1]).format(fractionLabelFormat),
+				date: startD,
+				fractionLabel: moment(startD).format(fractionLabelFormat),
 			};
 
 			steps.push(mStep);
 			scaleFactory.addToScaleIndex(startD);
 
 			if(moment(mStep.date).isBefore(targetD)){
-				buildIntermScale(mStep.date, targetD)
+				buildIntermScale(
+					moment(startD).add(fraction[0], fraction[1])._d,
+					targetD
+					)
 			}
 		}
 
@@ -186,7 +187,8 @@ function scaleFactory (){
 			let nextStep = moment(startD).add(unit[0], unit[1])._d;
 
 			// add intermediate steps
-			buildIntermScale(startD, 
+			buildIntermScale(
+				moment(startD).add(fraction[0], fraction[1])._d, 
 				moment(nextStep).subtract(fraction[0], fraction[1])._d
 			);
 
@@ -195,6 +197,8 @@ function scaleFactory (){
 			}
 		}
 
+		// console.log(scaleFactory.scaleIndex);
+		// console.log(steps);
 		return steps;
 	}
 
@@ -227,7 +231,14 @@ function scaleFactory (){
 					dateOff = date - prevStep.date,
 					positionOff = dateOff/(dateDiff/positionDiff);
 
-					// console.log(prevStep,nextStep,positionDiff,dateDiff,dateOff,positionOff);
+					// console.log(
+					// 	'date:', date,
+					// 	'prevStep:',prevStep,
+					// 	'nextStep:',nextStep,
+					// 	'positionDiff:',positionDiff,
+					// 	'dateDiff:',dateDiff,
+					// 	'dateOff:',dateOff,
+					// 	'positionOff:',positionOff);
 
 					position = Math.round(prevStep.position + positionOff);
 			}
@@ -246,10 +257,14 @@ function scaleFactory (){
 
 			let currDiff = 0;
 
+			// console.log(max_date_value);
+
 			for(let i = 0; i < dates.length; ++i){
 			   currDiff = testDate - dates[i];
 			   // console.log(currDiff);
 			   if(currDiff < 0 && currDiff > bestNextDiff){
+
+			   	// console.log('c1', currDiff, i);
 			   // If currDiff is negative, then testDate is more in the past than dates[i].
 			   // This means, that from testDate's point of view, dates[i] is in the future
 			   // and thus by a candidate for the next date.
@@ -259,6 +274,9 @@ function scaleFactory (){
 			       // console.log('currDiff < 0 && currDiff > bestNextDiff', bestNextDate, bestNextDiff);
 			   }
 			   if(currDiff > 0 && currDiff < bestPrevDiff){
+
+			   	// console.log('c2', currDiff, i);
+
 			   // If currDiff is positive, then testDate is more in the future than dates[i].
 			   // This means, that from testDate's point of view, dates[i] is in the past
 			   // and thus by a candidate for the previous date.

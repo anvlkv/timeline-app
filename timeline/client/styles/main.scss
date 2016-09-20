@@ -15,6 +15,7 @@
 	.scale-steps{
 		position: relative;
 		.scale-step{
+			// background: red;
 			text-align: right;
 			position: relative;
 			font-size: 2em;
@@ -26,17 +27,19 @@
 			transition-duration: 250ms;
 			transition-timing-function: ease-in-out;
 			&::after{
+				// background: red;
+
 				content:"\2013";
 				font-weight: 600;
 				font-size: 4em;
 				line-height: .5;
 				position: absolute;
-				top:-0.05em;
-				right:.225em;
+				top:.05em;
+				right:.22em;
 				transition-property: right;
 				transition-duration: 250ms;
 				transition-timing-function: ease-out;
-				height: 0;
+				height: 100%;
 			}
 
 			&.major-step{
@@ -54,6 +57,13 @@
 				// span{
 				// 	font-size: 2em;
 				// }
+			}
+
+			.scale-step-label{
+				position: absolute;
+				left:auto;
+				right: 4.5em;
+				top:.35em;
 			}
 		}
 	}
