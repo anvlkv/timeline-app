@@ -147,7 +147,7 @@ function scaleFactory (){
 			fractionLabelFormat= scaleFactory.fractionLabelFormat;
 
 		buildFullScale(
-			scaleFactory.startDate,
+			moment(scaleFactory.startDate).subtract(unit[0], unit[1])._d,
 			moment(scaleFactory.endDate).add(unit[0], unit[1])._d
 		);
 
@@ -226,6 +226,8 @@ function scaleFactory (){
 					dateDiff = nextStep.date - prevStep.date,
 					dateOff = date - prevStep.date,
 					positionOff = dateOff/(dateDiff/positionDiff);
+
+					// console.log(prevStep,nextStep,positionDiff,dateDiff,dateOff,positionOff);
 
 					position = Math.round(prevStep.position + positionOff);
 			}
